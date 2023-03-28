@@ -9,7 +9,7 @@ let timerId = null;
 
 startBtn.addEventListener ('click', () => {
     timerId = setInterval(() => {
-        body.style.backgroundColor =getRandomHexColor()
+        body.style.backgroundColor = getRandomHexColor()
     }, 1000);
 });
 
