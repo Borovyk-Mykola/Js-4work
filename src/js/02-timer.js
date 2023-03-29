@@ -42,8 +42,7 @@ class Timer {
             const currentTime = Date.now();
             const deltaTime = startTime - currentTime;
             if(deltaTime <= 1){
-                clearInterval(this.intarvalId);
-                this.isActive = false;
+                return
             };
             const {days, hours, minutes, seconds} = convertMs(deltaTime);
             const spans = document.querySelectorAll('.value');
