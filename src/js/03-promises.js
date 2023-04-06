@@ -25,15 +25,15 @@ form.addEventListener('submit', (e) => {
   let valueAmount = Number(inputAmount.value);
   console.log({valueDelay, valueStep, valueAmount});
   let inputAmountTotal = 0;
+  let delay = valueDelay - valueStep;
   setInterval(() => {
     inputAmountTotal += 1;
     if(inputAmountTotal > valueAmount){
       return
     };
     let position = inputAmountTotal;
-    let delay = valueDelay;
-    delay += valueStep;
     setTimeout(() => { 
+      delay += valueStep;
       createPromise(position, delay)
       .then(({position, delay}) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -41,6 +41,6 @@ form.addEventListener('submit', (e) => {
       .catch(({position, delay}) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    }, valueDelay);
+    }, delay);
   }, valueStep);
 })
